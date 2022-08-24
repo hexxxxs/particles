@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+
+      body {
+        background-color: rgb(107, 18, 18);
+      }
+      .container {
+        display: flex;
+        flex-direction: row;
+      }
+
+      :root {
+        --cursor-size: 28px;
+        --bg: #994b03;
+      }
+
+      .page-wrap {
+        background: var(--bg);
+        min-height: 100vh;
+      }
+
+      #cursor {
+        position: fixed;
+        top: calc(var(--cursor-size) * -0.5);
+        left: calc(var(--cursor-size) * -0.5);
+        pointer-events: none;
+        mix-blend-mode: difference;
+        filter: url(#goo);
+      }
+
+      .cursor-circle {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: var(--cursor-size);
+        height: var(--cursor-size);
+        border-radius: var(--cursor-size);
+        background: var(--bg);
+        transform-origin: center center;
+      }
+
+      body {
+        overflow-x: hidden;
+        /*   cursor: none; */
+      }
+
+      .goo {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="Untitled design.png" alt="" />
+    <svg xmlns="http://www.w3.org/2000/svg" class="goo" version="1.1" width="100%">
+      <defs>
+        <filter id="goo">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"></feGaussianBlur>
+          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 35 -15" result="goo"></feColorMatrix>
+          <feComposite in="SourceGraphic" in2="goo" operator="atop"></feComposite>
+        </filter>
+      </defs>
+    </svg>
+    <div class="page-wrap">
+      <div class="container">
+        <img id="logo" class="next-particle" data-width="550" data-height="270" src="/particle/assets/Untitled design.png design.png" />
+        <img id="logo" class="next-particle" data-width="550" data-height="270" src="/particle/assets/Untitled design1.png" />
+        <img id="logo" class="next-particle" data-width="550" data-height="270" src="/particle/assets/Untitled design2.png" />
+      </div>
+    </div>
+    <div id="cursor"></div>
+    <script src="/particle/js/nextparticle.min.js"></script>
+    <script src="/particle/js/particles.js"></script>
+    <script src="/particle/js/cursor.js"></script>
+  </body>
+</html>
